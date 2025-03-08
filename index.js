@@ -2,6 +2,36 @@ let btn = document.getElementById('no');
 let img = document.getElementById('img')
 // Ensure the button has absolute positioning
 let para = document.getElementById('p')
+let body = document.getElementById('body')
+body.style.display = 'none'
+// URL of the Google Docs document (make sure it's publicly accessible)
+const docUrl = "https://docs.google.com/document/d/1zcgFvruQb5FObdRzxVEnBmXVdJ1yKqB7xzCKqDXctRo/export?format=txt";
+
+// Fetch the content of the document
+fetch(docUrl)
+    .then(response => response.text())  // Convert response to text (plain text)
+    .then(text => {
+        
+
+       
+        let password = text
+        
+        
+        
+        let pass = prompt('Password : ')
+
+        if (pass != password){
+            body.style.display = 'none'
+        } 
+        else{
+             body.style.display = 'block'
+        }
+    })
+    .catch(error => console.error("Error:", error));  // Log any errors
+
+
+
+
 
 
 function no() {
@@ -25,3 +55,5 @@ function yes(){
     img.src = "reszz.gif"
 
 }
+
+
