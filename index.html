@@ -1,78 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UnButton</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <script defer src="index.js"></script>
-    <style>
-        body{
-            background-color: rgb(255, 171, 211);
-            font-family: 'Dancing Script', cursive;
-            font-weight: 600;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UnButton</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: rgb(255, 171, 211);
+      font-family: 'Dancing Script', cursive;
+      font-weight: 600;
+      margin: 0;
+      overflow: hidden;
+    }
 
-        .container{
-            display: flex;
-            justify-content: center;
-            align-items:center;
-            height:100vh;
-            flex-direction: column;
-        }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
 
-        img{
-            border-radius: 40px 0 40px;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.377);
-        }
-        a{
-            text-decoration: none;
-            padding: 5px 40px;
-            border-radius: 50px;
-            background-color: rgb(255, 0, 98);
-            font-size: xx-large;
-            box-shadow: 0 0 10px rgb(255, 0, 98), 0 0 25px rgb(255, 0, 98), 0 0 50px rgb(255, 0, 98);
-            color: white;
-            border: 1.5px solid white;
-            margin-left: 40px;
-        }
-        .para{
-            font-weight: 500;
-            font-style: normal;
-            font-size: 50px;
-            margin-top: 20px;
-        }
-        .btn{
-            margin-top: 40px;
-        }
-    </style>
+    img {
+      border-radius: 40px 0 40px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.377);
+    }
+
+    a {
+      text-decoration: none;
+      padding: 5px 40px;
+      border-radius: 50px;
+      background-color: rgb(255, 0, 98);
+      font-size: xx-large;
+      box-shadow: 0 0 10px rgb(255, 0, 98), 0 0 25px rgb(255, 0, 98), 0 0 50px rgb(255, 0, 98);
+      color: white;
+      border: 1.5px solid white;
+      margin-left: 40px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    a:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    .para {
+      font-weight: 500;
+      font-style: normal;
+      font-size: 50px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .btn {
+      margin-top: 40px;
+      position: relative;
+    }
+
+    #no {
+      display: none;
+      position: absolute;
+    }
+
+    /* Media queries for mobile responsiveness */
+    @media (max-width: 768px) {
+      .para {
+        font-size: 30px;
+      }
+
+      a {
+        padding: 10px 20px;
+        font-size: large;
+      }
+
+      img {
+        width: 80%;
+      }
+
+      .btn {
+        margin-top: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .para {
+        font-size: 24px;
+      }
+
+      a {
+        padding: 8px 15px;
+        font-size: medium;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .btn {
+        flex-direction: column;
+        margin-top: 15px;
+      }
+
+      .btn a {
+        margin: 10px 0;
+      }
+    }
+  </style>
 </head>
 <body id="body">
-    
-<div class="container">
+  <div class="container">
     <div class="gif">
-        <div>
-             <img id="img" src="miss.gif" height="auto" width="100%" >
-             
-        </div>
-
+      <img id="img" src="miss.gif" height="auto" width="100%" />
     </div>
     <div class="para" id="p">
-        Do you like Me!
+      Do you like Me!
     </div>
     <center>
-    <div class="btn">
-    
-        <a onclick="yes()" href="#">Yes</a>
-    
+      <div class="btn">
+        <a onclick="yes()" id="s" href="#">Yes</a>
+        <a id="or" onclick="or()" href="#">Maybe</a>
         <a id="no" onclick="no()" href="#">No</a>
-    
-    </div>
-</center>
-</div>
+      </div>
+    </center>
+  </div>
 
+  <script>
+    let body = document.getElementById('body');
+    body.style.display = 'none';
 
+    const docUrl = "https://docs.google.com/document/d/1zcgFvruQb5FObdRzxVEnBmXVdJ1yKqB7xzCKqDXctRo/export?format=txt";
 
+    fetch(docUrl)
+      .then(response => response.text())
+      .then(text => {
+        let password = text.trim();
+        let pass = prompt('Password : ');
+        if (pass === password) {
+          body.style.display = 'block';
+        }
+      })
+      .catch(error => console.error("Error:", error));
 
+    let btnYes = document.getElementById('s');
+    let btnMaybe = document.getElementById('or');
+    let btnNo = document.getElementById('no');
+    let img = document.getElementById('img');
+    let para = document.getElementById('p');
+
+    function yes() {
+      para.textContent = "I knew it!!";
+      img.src = "reszz.gif";
+    }
+
+    function or() {
+      btnMaybe.textContent = "Maybe";
+      img.src = "pinch.gif";
+      para.textContent = "Still unsure? 😅";
+
+      let yesSize = parseFloat(window.getComputedStyle(btnYes).fontSize);
+      let maybeSize = parseFloat(window.getComputedStyle(btnMaybe).fontSize);
+
+      btnYes.style.fontSize = (yesSize + 4) + "px";
+      btnYes.style.padding = ((yesSize + 4) / 2) + "px " + ((yesSize + 30)) + "px";
+
+      if (maybeSize > 10) {
+        btnMaybe.style.fontSize = (maybeSize - 2) + "px";
+        btnMaybe.style.padding = ((maybeSize - 2) / 2) + "px " + (maybeSize) + "px";
+      } else {
+        btnMaybe.style.display = "none";
+        btnNo.style.display = "inline-block";
+        para.textContent = "Here you go, the No button 😈";
+      }
+    }
+
+    function no() {
+      img.src = "pinch.gif";
+      para.textContent = "You are really mean.😭";
+
+      // Hide the button initially
+      btnNo.style.display = "none";
+
+      // Create a new element to represent the spinning "No" button
+      let spinButton = document.createElement("a");
+      spinButton.textContent = "No";
+      spinButton.style.position = "absolute";
+      spinButton.style.fontSize = "xx-large";
+      spinButton.style.padding = "10px 40px";
+      spinButton.style.backgroundColor = "rgb(255, 0, 98)";
+      spinButton.style.color = "white";
+      spinButton.style.borderRadius = "50px";
+      spinButton.style.boxShadow = "0 0 10px rgb(255, 0, 98), 0 0 25px rgb(255, 0, 98), 0 0 50px rgb(255, 0, 98)";
+      spinButton.style.transition = "all 0.3s ease";
+      document.body.appendChild(spinButton);
+
+      // Function to make it bounce
+      function bounceAndSpin() {
+        let screenWidth = window.innerWidth;
+        let screenHeight = window.innerHeight;
+
+        // Calculate random position (ensure it's inside the viewport)
+        let randomX = Math.random() * (screenWidth - spinButton.offsetWidth);
+        let randomY = Math.random() * (screenHeight - spinButton.offsetHeight);
+
+        // Apply the random position
+        spinButton.style.left = randomX + "px";
+        spinButton.style.top = randomY + "px";
+
+        // Make it spin
+        spinButton.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+        // After a small delay, make it bounce again
+        setTimeout(bounceAndSpin, 500); // Recursively call bounce
+      }
+
+      // Start the bouncing and spinning
+      bounceAndSpin();
+    }
+  </script>
 </body>
 </html>
