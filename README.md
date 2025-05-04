@@ -24,7 +24,7 @@
 
 ##  Live Preview
 
-👉 [Check it Out Here](#) 🔗 *(Insert live link here)*
+👉 [Check it Out Here](lovely-sube.netlify.app) 🔗 
 
 ---
 
