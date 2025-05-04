@@ -22,12 +22,6 @@
 
 ---
 
-##  Live Preview
-
-👉 [Check it Out Here](lovely-sube.netlify.app) 🔗 
-
----
-
 ## 🧪 How to Run Locally
 
 1. **Clone the repository**:
