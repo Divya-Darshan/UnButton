@@ -22,7 +22,7 @@
 
 ---
 
-## 🌈 Live Preview
+##  Live Preview
 
 👉 [Check it Out Here](#) 🔗 *(Insert live link here)*
 
