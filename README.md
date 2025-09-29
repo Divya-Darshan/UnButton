@@ -1,6 +1,6 @@
 # 🎮 Button Dodger with Number Authentication & Google Docs Integration
 
-> A fun JavaScript mini project where a button can be pressed, but another button keeps dodging your clicks, with a simple number authentication system and integration with Google Docs! 😄💻
+> A fun JavaScript mini project where a button can be pressed, but another button keeps dodging your clicks, with a simple number authentication system and integration with Google Docs! 😄
 
 ---
 
